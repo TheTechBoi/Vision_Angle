@@ -2,6 +2,11 @@
 
 import numpy as np
 import cv2
+from networktables import NetworkTables
+
+
+#NetworkTables.initialize(server='roborio-6025-frc.local') 
+#table = NetworkTables.getTable("Vision") 
 
 cap = cv2.VideoCapture(0)
 
@@ -74,10 +79,12 @@ while 1:
             else:
                 x = 0
                 y = 0
+                angle_difference = 0
 
     else:
         x = 0
         y = 0
+        angle_difference = 0
 
     print("x : ")
     print(x)
@@ -85,6 +92,10 @@ while 1:
     print(y) 
     print("Angle : ")
     print(angle_difference)
+
+    #table.putNumber("X", x)
+    #table.putNumber("Y", y)
+    #table.putNumber("Angle",angle_difference)
     
         
     cv2.imshow('OHA',frame)
